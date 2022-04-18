@@ -1,6 +1,6 @@
 #include <cstring>
 #include <GLES3/gl3.h>
-#include "include/ESUtil.h"
+#include "include/es-util.h"
 
 
 bool checkGlError(const char *funcName) {

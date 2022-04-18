@@ -24,7 +24,8 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         main.cpp
         hello-java.cpp
-#        ESUtil.cpp
+        es-util.cpp
+        triangle-renderer.cpp
         )
 
 include_directories(src/main/cpp/include/)
@@ -49,6 +50,7 @@ find_library( # Sets the name of the path variable.
 target_link_libraries( # Specifies the target library.
         glndk
 
-        # Links the target library to the log library
-        # included in the NDK.
-        ${log-lib})
+        android
+        log
+        GLESv3
+        )

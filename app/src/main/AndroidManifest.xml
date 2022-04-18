@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HelloJavaActivity" />
+        <activity android:name=".GLActivity" />
     </application>
 
 </manifest>

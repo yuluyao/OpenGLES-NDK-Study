@@ -1,18 +1,25 @@
 #ifndef GLES_ESUTIL_H
 #define GLES_ESUTIL_H
-#include "../../../../../../../../Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/GLES3/gl3.h"
-#include "../../../../../../../../Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/android/log.h"
-#include "../../../../../../../../Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/jni.h"
+
+#include <GLES3/gl3.h>
+#include <android/log.h>
+#include <jni.h>
+
 #ifndef LOG_TAG
 #define LOG_TAG "ES_LIB"
 #endif
+
 #define STR(s) #s
 #define STRV(s) STR(s)
+
 #define ALOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 #define ALOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
-#include "../../../../../../../../Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/cstdlib"
-#include "../../../../../../../../Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/cmath"
-#define  PI 3.1415
+
+#include <cstdlib>
+#include <cmath>
+
+#define  PI 3.1415927
+
 //检查当前程序错误
 bool checkGlError(const char *funcName);
 //获取并编译着色器对象

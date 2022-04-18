@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     binding.sampleText.text = stringFromJNI()
 
     binding.btnHelloJava.setOnClickListener { startActivity(Intent(this,HelloJavaActivity::class.java)) }
+
+    binding.btnGL.setOnClickListener { startActivity(Intent(this,GLActivity::class.java)) }
   }
 
   /**
