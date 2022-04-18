@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HelloJavaActivity" />
-        <activity android:name=".GLActivity" />
+        <activity android:name=".GLESActivity" />
     </application>
 
 </manifest>

@@ -4,13 +4,14 @@
 
 
 bool checkGlError(const char *funcName) {
-    GLint err = glGetError();
+    GLenum err = glGetError();
     if (err != GL_NO_ERROR) {
         ALOGE("GL error after %s(): 0x%08x\n", funcName, err);
         return true;
     }
     return false;
 }
+
 GLuint createShader(GLenum shaderType, const char *src) {
     GLuint shader = glCreateShader(shaderType);
     if (!shader) {
@@ -39,6 +40,7 @@ GLuint createShader(GLenum shaderType, const char *src) {
     }
     return shader;
 }
+
 GLuint createProgram(const char *vtxSrc, const char *fragSrc) {
     GLuint vtxShader = 0;
     GLuint fragShader = 0;
@@ -79,6 +81,7 @@ GLuint createProgram(const char *vtxSrc, const char *fragSrc) {
     glDeleteShader(fragShader);
     return program;
 }
+
 void
 matrixMultiply(Matrix *result, Matrix *srcA, Matrix *srcB) {
     Matrix tmp;
@@ -103,6 +106,7 @@ matrixMultiply(Matrix *result, Matrix *srcA, Matrix *srcB) {
     }
     memcpy(result, &tmp, sizeof(Matrix));
 }
+
 int createSquareGrid(int size, GLfloat **vertices, GLuint **indices) {
     GLuint i, j;
     int numIndices = (size - 1) * (size - 1) * 2 * 3;
@@ -138,6 +142,7 @@ int createSquareGrid(int size, GLfloat **vertices, GLuint **indices) {
     }
     return numIndices;
 }
+
 void
 frustum(Matrix *result, float w, float h, float nearZ,
         float farZ) {
@@ -165,6 +170,7 @@ frustum(Matrix *result, float w, float h, float nearZ,
     frust.m[3][0] = frust.m[3][1] = frust.m[3][3] = 0.0f;
     matrixMultiply(result, &frust, result);
 }
+
 void
 rotate(Matrix *result, GLfloat angle, GLfloat x, GLfloat y, GLfloat z) {
     GLfloat sinAngle, cosAngle;
@@ -207,6 +213,7 @@ rotate(Matrix *result, GLfloat angle, GLfloat x, GLfloat y, GLfloat z) {
         matrixMultiply(result, &rotMat, result);
     }
 }
+
 void
 translate(Matrix *result, GLfloat tx, GLfloat ty, GLfloat tz) {
     result->m[3][0] += (result->m[0][0] * tx + result->m[1][0] * ty + result->m[2][0] * tz);
@@ -214,6 +221,7 @@ translate(Matrix *result, GLfloat tx, GLfloat ty, GLfloat tz) {
     result->m[3][2] += (result->m[0][2] * tx + result->m[1][2] * ty + result->m[2][2] * tz);
     result->m[3][3] += (result->m[0][3] * tx + result->m[1][3] * ty + result->m[2][3] * tz);
 }
+
 void
 matrixLoadIdentity(Matrix *result) {
     memset(result, 0, sizeof(Matrix));
@@ -222,6 +230,7 @@ matrixLoadIdentity(Matrix *result) {
     result->m[2][2] = 1.0f;
     result->m[3][3] = 1.0f;
 }
+
 int
 createCube(float scale, GLfloat **vertices, GLfloat **normals,
            GLfloat **texCoords, GLuint **indices) {
@@ -345,6 +354,7 @@ createCube(float scale, GLfloat **vertices, GLfloat **normals,
     }
     return numIndices;
 }
+
 void
 perspective(Matrix *result, float fovy, float aspect, float nearZ, float farZ) {
     GLfloat frustumW, frustumH;
@@ -352,6 +362,7 @@ perspective(Matrix *result, float fovy, float aspect, float nearZ, float farZ) {
     frustumW = frustumH * aspect;
     frustum(result, frustumW, frustumH, nearZ, farZ);
 }
+
 void
 scale(Matrix *result, GLfloat sx, GLfloat sy, GLfloat sz) {
     result->m[0][0] *= sx;
@@ -367,6 +378,7 @@ scale(Matrix *result, GLfloat sx, GLfloat sy, GLfloat sz) {
     result->m[2][2] *= sz;
     result->m[2][3] *= sz;
 }
+
 void
 matrixLookAt(Matrix *result,
              float posX, float posY, float posZ,
@@ -423,6 +435,7 @@ matrixLookAt(Matrix *result,
     result->m[3][2] = axisZ[0] * posX + axisZ[1] * posY + axisZ[2] * posZ;
     result->m[3][3] = 1.0f;
 }
+
 void
 ortho(Matrix *result, float left, float right, float bottom, float top, float nearZ,
       float farZ) {
@@ -442,6 +455,7 @@ ortho(Matrix *result, float left, float right, float bottom, float top, float ne
     ortho.m[3][2] = -(nearZ + farZ) / deltaZ;
     matrixMultiply(result, &ortho, result);
 }
+
 int
 createSphere(int numSlices, float radius, GLfloat **vertices, GLfloat **normals,
              GLfloat **texCoords, GLuint **indices) {

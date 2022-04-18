@@ -26,6 +26,8 @@ bool checkGlError(const char *funcName);
 GLuint createShader(GLenum shaderType, const char *src);
 //使用着色器生成着色器程序对象
 GLuint createProgram(const char *vtxSrc, const char *fragSrc);
+
+
 //产生一个立方体
 int createCube(float scale, GLfloat **vertices, GLfloat **normals,
                GLfloat **texCoords, GLuint **indices);
@@ -33,6 +35,7 @@ int createSquareGrid ( int size, GLfloat **vertices, GLuint **indices );
 //生成一个球
 int createSphere(int numSlices, float radius, GLfloat **vertices, GLfloat **normals,
                  GLfloat **texCoords, GLuint **indices);
+
 typedef struct {
     GLfloat m[4][4];
 } Matrix;

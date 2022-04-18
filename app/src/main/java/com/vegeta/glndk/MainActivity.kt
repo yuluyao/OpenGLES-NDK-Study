@@ -3,7 +3,6 @@ package com.vegeta.glndk
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import com.vegeta.glndk.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     binding.btnHelloJava.setOnClickListener { startActivity(Intent(this,HelloJavaActivity::class.java)) }
 
-    binding.btnGL.setOnClickListener { startActivity(Intent(this,GLActivity::class.java)) }
+    binding.btnGL.setOnClickListener { startActivity(Intent(this,GLESActivity::class.java)) }
   }
 
   /**

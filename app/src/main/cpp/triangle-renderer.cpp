@@ -43,7 +43,7 @@ GLuint program;
 
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_com_vegeta_glndk_GLActivity_init(JNIEnv *env, jobject thiz) {
+Java_com_vegeta_glndk_TriangleRenderer_init(JNIEnv *env, jobject thiz) {
     program = createProgram(VERTEX_SHADER, FRAGMENT_SHADER);
     if (!program) {
         ALOGE("程序创建失败");
@@ -55,14 +55,14 @@ Java_com_vegeta_glndk_GLActivity_init(JNIEnv *env, jobject thiz) {
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_vegeta_glndk_GLActivity_resize(JNIEnv *env, jobject thiz, jint width, jint height) {
+Java_com_vegeta_glndk_TriangleRenderer_resize(JNIEnv *env, jobject thiz, jint width, jint height) {
     glViewport(0, 0, width, height);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_vegeta_glndk_GLActivity_step(JNIEnv *env, jobject thiz) {
+Java_com_vegeta_glndk_TriangleRenderer_step(JNIEnv *env, jobject thiz) {
     glClear(GL_COLOR_BUFFER_BIT);
     glUseProgram(program);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, VERTEX);
