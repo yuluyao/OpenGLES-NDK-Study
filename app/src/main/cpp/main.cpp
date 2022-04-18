@@ -40,12 +40,3 @@ Java_com_vegeta_glndk_MainActivity_stringFromJNI(
 #endif
     return env->NewStringUTF("Hello from JNI !  Compiled with ABI " ABI ".");
 }
-
-static int count;
-extern "C"
-JNIEXPORT void JNICALL
-Java_com_vegeta_glndk_MainActivity_callback(JNIEnv *env, jobject thiz) {
-
-
-
-}

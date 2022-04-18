@@ -21,10 +21,4 @@ class HelloJavaActivity : AppCompatActivity() {
     binding.sampleText.text = "count: $count"
   }
 
-  companion object {
-    // Used to load the 'glndk' library on application startup.
-    init {
-//      System.loadLibrary("glndk")
-    }
-  }
 }
