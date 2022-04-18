@@ -2,7 +2,7 @@
 #include <string>
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_vegeta_glndk_MainActivity_stringFromJNI(
+Java_com_vegeta_glndk_MainActivity_getABIString(
         JNIEnv *env,
         jobject /* this */) {
 //    std::string hello = "Hello from C++";
@@ -39,4 +39,14 @@ Java_com_vegeta_glndk_MainActivity_stringFromJNI(
     #define ABI "unknown"
 #endif
     return env->NewStringUTF("Hello from JNI !  Compiled with ABI " ABI ".");
+}
+
+static int count;
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_vegeta_glndk_MainActivity_cInvokeJava(JNIEnv *env, jobject thiz) {
+    jclass activityClass = env->GetObjectClass(thiz);
+    jmethodID method = env->GetMethodID(activityClass, "setText", "(I)V");
+    env->CallVoidMethod(thiz, method, count++);
 }
