@@ -29,17 +29,6 @@ static const GLfloat VERTEX[] = {
 
 GLuint program;
 
-//extern "C" {
-//JNIEXPORT jboolean JNICALL
-//Java_com_vegeta_glndk_GLActivity_init(JNIEnv *env, jobject thiz);
-//
-//JNIEXPORT void JNICALL
-//Java_com_vegeta_glndk_GLActivity_resize(JNIEnv *env, jobject thiz, jint width, jint height);
-//
-//JNIEXPORT void JNICALL
-//Java_com_vegeta_glndk_GLActivity_step(JNIEnv *env, jobject thiz);
-//
-//}
 
 extern "C"
 JNIEXPORT jboolean JNICALL
